@@ -1,0 +1,1 @@
+<p>"this is from a component"</p>
