@@ -20,10 +20,11 @@ class Util
     {
         $pDir = $_ENV[Constants::pagesDirEnv] ?? Constants::pagesDir;
         $originalRequest = $_SERVER['REQUEST_URI'];
-        $adjustedRequest = "/$pDir" . $originalRequest . ".php";
+        $adjustedRequest = "/$pDir" . $originalRequest . ".php"; // pages accessible from url must be .php
         $rootDir = $_SERVER["DOCUMENT_ROOT"];
 
         if ($originalRequest === "/") {
+            // because / does not have a document name, assume they want index
             $rootFile = $_ENV[Constants::rootFileEnv] ?? Constants::rootFile;
             require($rootDir . "/$pDir/$rootFile");
         } elseif (file_exists($rootDir . $adjustedRequest)) {

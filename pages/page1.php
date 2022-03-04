@@ -1,9 +1,12 @@
 <?php
 // url request = "/page1"
+use SimpleFramework\Util;
 
-SimpleFramework\Util::includeComponent("head.html");
+Util::includeComponent("head.php", (object)[
+    "title" => "This is Page1"
+]);
 
 echo "i am page 1. look at me";
 
-SimpleFramework\Util::includeComponent("test.php");
-SimpleFramework\Util::includeComponent("end.html");
+Util::includeComponent("test.php");
+Util::includeComponent("end.html");

@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>SimpleFramework</title>
+    <title>
+        <?php echo $data->title ?? "Simple Framework"; ?>
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 

@@ -3,14 +3,14 @@
 
 use SimpleFramework\Util;
 
-Util::includeComponent("head.html");
+Util::includeComponent("head.php");
 
 echo "i am root";
 
 Util::includeComponent("test.php");
 Util::includeComponent("end.html");
 
-$data = (object)[
+$input = (object)[
     "text" => "parameterized input text"
 ];
-Util::requireComponent("showText.php", $data);
+Util::requireComponent("showText.php", $input);
