@@ -1,9 +1,16 @@
 <?php
 // url request = "/"
 
-SimpleFramework\Util::includeComponent("head.html");
+use SimpleFramework\Util;
+
+Util::includeComponent("head.html");
 
 echo "i am root";
 
-SimpleFramework\Util::includeComponent("test.php");
-SimpleFramework\Util::includeComponent("end.html");
+Util::includeComponent("test.php");
+Util::includeComponent("end.html");
+
+$data = (object)[
+    "text" => "parameterized input text"
+];
+Util::requireComponent("showText.php", $data);

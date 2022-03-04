@@ -4,9 +4,14 @@ namespace SimpleFramework;
 
 class Util
 {
-    public static function includeComponent(string $component)
+    public static function includeComponent(string $component, object $data = null)
     {
-        include $_SERVER['DOCUMENT_ROOT'] . "/components/$component";
+        include($_SERVER['DOCUMENT_ROOT'] . "/components/$component");
+    }
+
+    public static function requireComponent(string $component, object $data = null)
+    {
+        require($_SERVER['DOCUMENT_ROOT'] . "/components/$component");
     }
 
     public static function loadContent()
