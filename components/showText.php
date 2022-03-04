@@ -1,3 +1,3 @@
 <?php
 
-print_r($data->text);
+print($data->text . "<br>");

@@ -6,22 +6,26 @@ class Util
 {
     public static function includeComponent(string $component, object $data = null)
     {
-        include($_SERVER['DOCUMENT_ROOT'] . "/components/$component");
+        $cDir = $_ENV[Constants::componentsDirEnv] ?? Constants::componentsDir;
+        include($_SERVER['DOCUMENT_ROOT'] . "/$cDir/$component");
     }
 
     public static function requireComponent(string $component, object $data = null)
     {
-        require($_SERVER['DOCUMENT_ROOT'] . "/components/$component");
+        $cDir = $_ENV[Constants::componentsDirEnv] ?? Constants::componentsDir;
+        require($_SERVER['DOCUMENT_ROOT'] . "/$cDir/$component");
     }
 
     public static function loadContent()
     {
+        $pDir = $_ENV[Constants::pagesDirEnv] ?? Constants::pagesDir;
         $originalRequest = $_SERVER['REQUEST_URI'];
-        $adjustedRequest = "/pages" . $originalRequest . ".php";
+        $adjustedRequest = "/$pDir" . $originalRequest . ".php";
         $rootDir = $_SERVER["DOCUMENT_ROOT"];
 
         if ($originalRequest === "/") {
-            require($rootDir . "/pages/index.php");
+            $rootFile = $_ENV[Constants::rootFileEnv] ?? Constants::rootFile;
+            require($rootDir . "/$pDir/$rootFile");
         } elseif (file_exists($rootDir . $adjustedRequest)) {
             require($rootDir . $adjustedRequest);
         } else {
