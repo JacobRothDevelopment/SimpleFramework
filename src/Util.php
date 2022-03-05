@@ -2,6 +2,8 @@
 
 namespace SimpleFramework;
 
+use Error;
+
 class Util
 {
     /** Import a Component into pages or other components */
@@ -36,7 +38,7 @@ class Util
         } elseif (file_exists($rootDir . $adjustedRequest)) {
             require($rootDir . $adjustedRequest);
         } else {
-            if (file_exists($originalRequest)) {
+            if (file_exists($rootDir . $originalRequest)) {
                 include($rootDir . $originalRequest);
             } else {
                 http_response_code(404);

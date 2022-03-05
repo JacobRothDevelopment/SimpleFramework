@@ -10,3 +10,7 @@ echo "i am page 1. look at me";
 
 Util::includeComponent("test.php");
 Util::includeComponent("end.html");
+
+?>
+
+<img src="/assets/EXAMPLE.png">
