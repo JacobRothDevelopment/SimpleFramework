@@ -10,6 +10,5 @@ class Constants
 
     public const componentsDir = "components";
     public const pagesDir = "pages";
-
-    public const rootFile = "index.php";
+    public const rootFile = "index";
 }
