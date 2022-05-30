@@ -45,7 +45,6 @@ class Util
             if (file_exists($rootDir . $originalRequest)) {
                 $fileExtension = Util::getFileExtension($originalRequest);
                 $contentType = Constants::contentTypes[".$fileExtension"];
-                error_log("CONTENT TYPE ::::: $originalRequest :::: $fileExtension :::: $contentType");
                 header("Content-Type: $contentType");
                 include($rootDir . $originalRequest);
             } else {
