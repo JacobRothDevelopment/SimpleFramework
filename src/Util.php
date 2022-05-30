@@ -29,7 +29,7 @@ class Util
     public static function loadContent()
     {
         $pDir = $_ENV[Constants::pagesDirEnv] ?? Constants::pagesDir;
-        $originalRequest = $_SERVER['REQUEST_URI'];
+        $originalRequest = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         // pages accessible from url must be .php
         $adjustedRequest = "/$pDir" . $originalRequest . ".php";
         $rootDir = $_SERVER["DOCUMENT_ROOT"];
