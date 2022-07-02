@@ -14,3 +14,7 @@ $input = (object)[
     "text" => "parameterized input text"
 ];
 Util::requireComponent("showText.php", $input);
+
+?>
+
+<img src="/assets/EXAMPLE.png" alt="">
