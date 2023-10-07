@@ -1,5 +1,4 @@
 <?php
-// url request = "/"
 
 use SimpleFramework\Util;
 
@@ -17,4 +16,5 @@ Util::requireComponent("showText.php", $input);
 
 ?>
 
+<p>this is html</p>
 <img src="/assets/EXAMPLE.png" alt="">
