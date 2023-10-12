@@ -57,7 +57,7 @@ class Util
             //   assume they want an asset file (js, css, etc.)
 
             // before anything, test if request should be ignored
-            foreach (Constants::getIgnoreRegexList() as $regex) {
+            foreach (Util::getIgnoreRegexList() as $regex) {
                 if (preg_match($regex, $originalRequest) === 1) Util::return404();
             }
 
@@ -85,7 +85,8 @@ class Util
     }
 
     /**
-     * Get mime content type for `Content-Type` header
+     * * Get mime content type for `Content-Type` header
+     * * Uses apache's mime.types by default
      *
      * @param string $file
      * @return string
@@ -95,13 +96,18 @@ class Util
         // for future reference maybe:
         // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
         // https://docs.w3cub.com/http/basics_of_http/mime_types/complete_list_of_mime_types.html
-        $type = mime_content_type($file);
+        // https://www.php.net/manual/en/function.mime-content-type.php
+        $fileExt = pathinfo($file, PATHINFO_EXTENSION);
+
+        $type = array_key_exists($fileExt, $_ENV[Constants::mimeTypes])
+            ? $_ENV[Constants::mimeTypes][$fileExt]
+            : false;
 
         return $type === false ? "" : $type;
     }
 
     /**
-     * * Sets response code to 404 <br></br>
+     * * Sets response code to 404
      * * Includes the default 404 page (if defined)
      * * Calls `exit`, terminating the request
      *
@@ -114,5 +120,25 @@ class Util
             include($_ENV[Constants::notFoundFile]);
         }
         exit;
+    }
+
+    /**
+     * Returns APP_SF_IGNORE_REGEX combined with more regex to ignore APP_SF_PAGES and APP_SF_COMPONENTS
+     *
+     * @return string[]
+     */
+    private static function getIgnoreRegexList(): array
+    {
+        $pagesDir = $_ENV[Constants::pagesDir];
+        $componentsDir = $_ENV[Constants::componentsDir];
+
+        return array_merge(
+            $_ENV[Constants::ignoreRegexList],
+            [
+                "/^\/$pagesDir\/.*$/", // pages files should not be accessed outside of index.php
+                "/^\/$componentsDir\/.*$/", // component files should not be accessed outside of index.php
+                "/^\/index.php$/", // requests to index.php should 404
+            ],
+        );
     }
 }
