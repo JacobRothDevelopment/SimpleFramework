@@ -117,10 +117,7 @@ class Util
     {
         http_response_code(404);
         if ($_ENV[Constants::notFoundFile] !== null) {
-            error_log("here :: " . $_SERVER['DOCUMENT_ROOT'] . $_ENV[Constants::notFoundFile]);
             $isRelative = file_exists($_SERVER['DOCUMENT_ROOT'] . $_ENV[Constants::notFoundFile]);
-
-            error_log($isRelative ? "true" : "false");
 
             if ($isRelative) {
                 include($_SERVER['DOCUMENT_ROOT'] . $_ENV[Constants::notFoundFile]);
