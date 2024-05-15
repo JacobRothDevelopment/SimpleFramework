@@ -22,15 +22,20 @@ class Constants
     ];
     private const _mimeTypesPath = "/etc/mime.types";
 
+    /**
+     * set ENV vars specific for SimpleFramework that aren't already set
+     *
+     * @return void
+     */
     static function setDefaults()
     {
-        $_ENV[Constants::componentsDir] = Constants::_componentsDir;
-        $_ENV[Constants::pagesDir] = Constants::_pagesDir;
-        $_ENV[Constants::rootFile] = Constants::_rootFile;
-        $_ENV[Constants::notFoundFile] = Constants::_notFoundFile;
-        $_ENV[Constants::ignoreRegexList] = Constants::_ignoreRegexList;
-        $_ENV[Constants::mimeTypesPath] = Constants::_mimeTypesPath;
-        $_ENV[Constants::mimeTypes] = Constants::parseMimeTypes();
+        $_ENV[Constants::componentsDir] = $_ENV[Constants::componentsDir] ?? Constants::_componentsDir;
+        $_ENV[Constants::pagesDir] = $_ENV[Constants::pagesDir] ?? Constants::_pagesDir;
+        $_ENV[Constants::rootFile] = $_ENV[Constants::rootFile] ?? Constants::_rootFile;
+        $_ENV[Constants::notFoundFile] = $_ENV[Constants::notFoundFile] ?? Constants::_notFoundFile;
+        $_ENV[Constants::ignoreRegexList] = $_ENV[Constants::ignoreRegexList] ?? Constants::_ignoreRegexList;
+        $_ENV[Constants::mimeTypesPath] = $_ENV[Constants::mimeTypesPath] ?? Constants::_mimeTypesPath;
+        $_ENV[Constants::mimeTypes] = $_ENV[Constants::mimeTypes] ?? Constants::parseMimeTypes();
     }
 
     /**
