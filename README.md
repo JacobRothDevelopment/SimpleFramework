@@ -64,13 +64,13 @@ If needed, you can change some of the defaults in SimpleFramework using `$_ENV`
 
 | $\_ENV name                  | Default                         | Description                                                                    |
 | ---------------------------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| APP_SF_COMPONENTS            | components                      | Directory where component files are located                                    |
-| APP_SF_PAGES                 | pages                           | Directory where pages are located                                              |
-| APP_SF_ROOT                  | index                           | Root PHP page name                                                             |
-| APP_SF_404                   | null                            | The page delivered when url doesn't map to file                                |
+| APP_SF_COMPONENTS            | `components`                    | Directory where component files are located                                    |
+| APP_SF_PAGES                 | `pages`                         | Directory where pages are located                                              |
+| APP_SF_ROOT                  | `index.php`                     | Root PHP page name                                                             |
+| APP_SF_404                   | `null`                          | The page delivered when url doesn't map to file                                |
 | APP_SF_IGNORE_REGEX          | `["/^\/\..*$/","/^\/vendor$/"]` | If any requests match any of the regular expressions, automatically return 404 |
-| APP_SF_APACHE_MIME_DOT_TYPES | /etc/mime.types                 | the file path for apache mime types                                            |
-| APP_SF_MIME_TYPES_MAP        | null                            | The page delivered when url doesn't map to file                                |
+| APP_SF_APACHE_MIME_DOT_TYPES | `/etc/mime.types`               | The file path for apache mime types                                            |
+| APP_SF_MIME_TYPES_MAP        | `null`                          | Map of file extensions to content types                                        |
 
 You can set these ENVs like this:
 
