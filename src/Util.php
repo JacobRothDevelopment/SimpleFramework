@@ -61,16 +61,24 @@ class Util
                 if (preg_match($regex, $originalRequest) === 1) Util::return404();
             }
 
-            $file = $rootDir . $originalRequest;
-            if (is_file($file)) {
-                // if file exists, return it and set content-type header
-                $contentType = Util::getContentType($file);
-                header("Content-Type: $contentType");
-                include($rootDir . $originalRequest);
-            } else {
-                // if the file requested is not found, return 404
-                Util::return404();
-            }
+            Util::loadResource($file);
+        }
+    }
+
+    /**
+     * if file exists, return it and set content type; else return 404
+     *
+     * @param string $path
+     * @return void
+     */
+    public static function loadResource(string $path)
+    {
+        if (is_file($path)) {
+            $contentType = Util::getContentType($path);
+            header("Content-Type: $contentType");
+            include($rootDir . $originalRequest);
+        } else {
+            Util::return404();
         }
     }
 
