@@ -61,6 +61,7 @@ class Util
                 if (preg_match($regex, $originalRequest) === 1) Util::return404();
             }
 
+            $file = $rootDir . $originalRequest;
             Util::loadResource($file);
         }
     }
@@ -76,7 +77,7 @@ class Util
         if (is_file($path)) {
             $contentType = Util::getContentType($path);
             header("Content-Type: $contentType");
-            include($rootDir . $originalRequest);
+            include($path);
         } else {
             Util::return404();
         }
