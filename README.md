@@ -52,11 +52,12 @@ What SimpleFramework does:
 
 ## Using Util
 
-| Util function    | Description                                             |
-| ---------------- | ------------------------------------------------------- |
-| includeComponent | Import Component                                        |
-| requireComponent | Import Component<br/>Throws error if file doesn't exist |
-| loadContent      | Start processing the url request                        |
+| Util function    | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| includeComponent | Import Component                                           |
+| requireComponent | Import Component<br/>Throws error if file doesn't exist    |
+| loadContent      | Start processing the url request                           |
+| loadResource     | Load only given resource file (ie stylesheet, image, etc.) |
 
 ## ENVs
 
